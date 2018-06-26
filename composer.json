@@ -1,0 +1,17 @@
+{
+    "name": "kirianmurgadella/restapimanager",
+    "description": "Library to manage calls to a Restfull API",
+    "type": "library",
+    "autoload": {
+        "psr-4": {
+            "KMurgadella\\RestApiManager\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Kirian Murgadella",
+            "email": "kirian@murgadella.com"
+        }
+    ],
+    "require": {}
+}
