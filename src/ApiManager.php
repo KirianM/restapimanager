@@ -1,9 +1,9 @@
 <?php
 
-namespace KMurgadella\ResrApiManager\src;
+namespace KMurgadella\ResrApiManager;
 
-use KMurgadella\ResrApiManager\src\Exeption\RequestException;
-use KMurgadella\ResrApiManager\src\Exeption\RequestResponseFormatException;
+use KMurgadella\ResrApiManager\Exception\RequestException;
+use KMurgadella\ResrApiManager\Exception\RequestResponseFormatException;
 
 class ApiManager implements ApiManagerInterface
 {

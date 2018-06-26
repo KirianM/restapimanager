@@ -1,6 +1,6 @@
 <?php
 
-namespace KMurgadella\ResrApiManager\src;
+namespace KMurgadella\RestApiManager;
 
 interface ApiManagerInterface
 {

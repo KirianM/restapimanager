@@ -1,6 +1,6 @@
 <?php
 
-namespace KMurgadella\src\Exeption;
+namespace KMurgadella\Exception;
 
 class RequestResponseFormatException extends Exception
 {
