@@ -1,6 +1,6 @@
 <?php
 
-namespace KMurgadella\ResrApiManager;
+namespace KMurgadella\RestApiManager;
 
 use KMurgadella\ResrApiManager\Exception\RequestException;
 use KMurgadella\ResrApiManager\Exception\RequestResponseFormatException;
