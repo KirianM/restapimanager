@@ -20,7 +20,7 @@ class ApiManager implements ApiManagerInterface
         $this->apiUrl = $apiUrl;
     }
 
-    protected function connect()
+    public function connect()
     {
         //TODO: Obtain a new OAuth token if necessary
         return true;
@@ -41,7 +41,7 @@ class ApiManager implements ApiManagerInterface
         return $this->request('POST', $url);
     }
 
-    protected function request(string $method, string $url, array $data = [], array $headers = [])
+    public function request(string $method, string $url, array $data = [], array $headers = [])
     {
         $ch = curl_init();
 
