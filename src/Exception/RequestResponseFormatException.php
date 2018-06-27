@@ -1,10 +1,10 @@
 <?php
 
-namespace KMurgadella\Exception;
+namespace KMurgadella\RestApiManager\Exception;
 
-class RequestResponseFormatException extends Exception
+class RequestResponseFormatException extends \Exception
 {
-    public function __construct(Exception $previous = null)
+    public function __construct(\Exception $previous = null)
     {
         parent::__construct('Error while trying to decode response', 2, $previous);
     }

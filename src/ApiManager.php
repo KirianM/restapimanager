@@ -2,8 +2,8 @@
 
 namespace KMurgadella\RestApiManager;
 
-use KMurgadella\ResrApiManager\Exception\RequestException;
-use KMurgadella\ResrApiManager\Exception\RequestResponseFormatException;
+use KMurgadella\RestApiManager\Exception\RequestException;
+use KMurgadella\RestApiManager\Exception\RequestResponseFormatException;
 
 class ApiManager implements ApiManagerInterface
 {
@@ -65,7 +65,7 @@ class ApiManager implements ApiManagerInterface
         try {
             $response = curl_exec($ch);
         } catch (\Exception $e) {
-            throw new \RequestException($method, $url);
+            throw new RequestException($method, $url);
         }
 
         curl_close($ch);
@@ -73,7 +73,7 @@ class ApiManager implements ApiManagerInterface
         try {
             $responseJson = json_decode($response);
         } catch (\Exception $e) {
-            throw new \RequestResponseFormatException();
+            throw new RequestResponseFormatException();
         }
 
         return $responseJson;

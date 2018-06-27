@@ -4,11 +4,11 @@ namespace KMurgadella\RestApiManager;
 
 interface ApiManagerInterface
 {
-    function __construct(string $apiUrl);
+    public function __construct(string $apiUrl);
 
     public function setApiUrl(string $apiUrl);
 
-    protected function connect();
+    public function connect();
 
     public function get(string $url);
 
@@ -16,5 +16,5 @@ interface ApiManagerInterface
 
     public function post(string $url, array $data);
 
-    protected function request(string $method, string $url, array $data, array $headers);
+    public function request(string $method, string $url, array $data, array $headers);
 }
