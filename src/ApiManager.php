@@ -46,19 +46,16 @@ class ApiManager implements ApiManagerInterface
         $ch = curl_init();
 
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-        curl_setopt($ch, CURLOPT_URL, $this->apiUrl.$url);
+        curl_setopt($ch, CURLOPT_URL, $this->apiUrl . $url);
 
-        if(in_array($method, ['POST', 'PUT']))
-        {
+        if (in_array($method, ['POST', 'PUT'])) {
             curl_setopt($ch, CURLOPT_POST, 1);
-            if(!empty($data))
-            {
+            if (!empty($data)) {
                 curl_setopt($ch, CURLOPT_POSTFIELDS, $data);
             }
         }
 
-        if(!empty($headers))
-        {
+        if (!empty($headers)) {
             curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
         }
 
