@@ -73,7 +73,7 @@ class ApiManager implements ApiManagerInterface
         curl_close($ch);
 
         try {
-            $responseJson = json_decode($response);
+            $responseJson = json_decode($response, true);
         } catch (\Exception $e) {
             throw new RequestResponseFormatException();
         }
