@@ -47,9 +47,7 @@ class Jwt implements ManagerInterface
 
     public function headers(): array
     {
-        return [
-            'Authorization' => $this->token->header()
-        ];
+        return ['Authorization: ' . $this->token->header()];
     }
 
     public function getToken(): TokenInterface
