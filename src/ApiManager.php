@@ -63,7 +63,7 @@ class ApiManager implements ApiManagerInterface
             curl_setopt($ch, CURLOPT_CUSTOMREQUEST, $method);
         }
 
-        $headers = array_merge($headers, 'Content-Type: application/json');
+        $headers = array_merge($headers, ['Content-Type: application/json']);
 
         if (!empty($headers)) {
             curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
