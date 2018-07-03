@@ -2,17 +2,28 @@
 
 namespace KMurgadella\RestApiManager;
 
+use KMurgadella\RestApiManager\Auth\Manager\ManagerInterface;
 use KMurgadella\RestApiManager\Exception\RequestException;
 use KMurgadella\RestApiManager\Exception\RequestResponseFormatException;
 
 class ApiManager implements ApiManagerInterface
 {
     protected $apiUrl;
-    protected $connection;
+    protected $auth;
 
     function __construct(string $apiUrl = null)
     {
         $this->apiUrl = $apiUrl;
+    }
+
+    public function getApiUrl(): string
+    {
+        return $this->apiUrl;
+    }
+
+    public function setAuth(ManagerInterface $auth)
+    {
+        $this->auth = $auth;
     }
 
     public function setApiUrl(string $apiUrl)
@@ -20,28 +31,22 @@ class ApiManager implements ApiManagerInterface
         $this->apiUrl = $apiUrl;
     }
 
-    public function connect()
+    public function get(string $url, array $headers = []): array
     {
-        //TODO: Obtain a new OAuth token if necessary
-        return true;
+        return $this->request('GET', $url, $headers);
     }
 
-    public function get(string $url)
+    public function put(string $url, array $data, array $headers = []): array
     {
-        return $this->request('GET', $url);
+        return $this->request('PUT', $url, $headers);
     }
 
-    public function put(string $url, array $data)
+    public function post(string $url, array $data, array $headers = []): array
     {
-        return $this->request('PUT', $url);
+        return $this->request('POST', $url, $headers);
     }
 
-    public function post(string $url, array $data)
-    {
-        return $this->request('POST', $url);
-    }
-
-    public function request(string $method, string $url, array $data = [], array $headers = [])
+    public function request(string $method, string $url, array $data = [], array $headers = []): array
     {
         $ch = curl_init();
 
@@ -74,5 +79,15 @@ class ApiManager implements ApiManagerInterface
         }
 
         return $responseJson;
+    }
+
+    public function authHeaders(array $headers = []): array
+    {
+        if (empty($this->auth)) {
+            //TODO: Throw no valid Auth
+            throw new \Exception('No valid auth');
+        }
+
+        return array_merge($headers, $this->auth->headers());
     }
 }
