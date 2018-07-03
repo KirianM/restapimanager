@@ -31,22 +31,22 @@ class ApiManager implements ApiManagerInterface
         $this->apiUrl = $apiUrl;
     }
 
-    public function get(string $url, array $headers = [])
+    public function get(string $url, array $headers = []): array
     {
         return $this->request('GET', $url, $headers);
     }
 
-    public function put(string $url, array $data, array $headers = [])
+    public function put(string $url, array $data, array $headers = []): array
     {
         return $this->request('PUT', $url, $data, $headers);
     }
 
-    public function post(string $url, array $data, array $headers = [])
+    public function post(string $url, array $data, array $headers = []): array
     {
         return $this->request('POST', $url, $data, $headers);
     }
 
-    public function request(string $method, string $url, array $data = [], array $headers = [])
+    public function request(string $method, string $url, array $data = [], array $headers = []): array
     {
         $ch = curl_init();
 
