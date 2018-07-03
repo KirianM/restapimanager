@@ -4,6 +4,7 @@ namespace KMurgadella\RestApiManager\Auth\Manager;
 
 use KMurgadella\RestApiManager\ApiManagerInterface;
 use KMurgadella\RestApiManager\Auth\Model\Jwt as JwtModel;
+use KMurgadella\RestApiManager\Auth\TokenInterface;
 
 class Jwt implements ManagerInterface
 {
@@ -26,6 +27,7 @@ class Jwt implements ManagerInterface
         if (!empty($request)) {
             $model = new JwtModel();
             $model->setData($request);
+            $this->setToken($model);
         } else {
             //TODO: Throw Exception cannot get new token
         }
@@ -48,5 +50,15 @@ class Jwt implements ManagerInterface
         return [
             'Authorization' => $this->token->header()
         ];
+    }
+
+    public function getToken(): TokenInterface
+    {
+        return $this->token;
+    }
+
+    public function setToken(TokenInterface $token)
+    {
+        $this->token = $token;
     }
 }

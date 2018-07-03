@@ -3,6 +3,7 @@
 namespace KMurgadella\RestApiManager\Auth\Manager;
 
 use KMurgadella\RestApiManager\ApiManagerInterface;
+use KMurgadella\RestApiManager\Auth\TokenInterface;
 
 interface ManagerInterface
 {
@@ -15,4 +16,8 @@ interface ManagerInterface
     public function validate(): bool;
 
     public function headers(): array;
+
+    public function getToken(): TokenInterface;
+
+    public function setToken(TokenInterface $token);
 }
