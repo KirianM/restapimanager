@@ -33,7 +33,7 @@ class ApiManager implements ApiManagerInterface
 
     public function get(string $url, array $headers = []): array
     {
-        return $this->request('GET', $url, $headers);
+        return $this->request('GET', $url, [], $headers);
     }
 
     public function put(string $url, array $data, array $headers = []): array
