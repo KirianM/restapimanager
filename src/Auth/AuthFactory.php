@@ -7,7 +7,7 @@ use KMurgadella\RestApiManager\Auth\Manager;
 
 class AuthFactory
 {
-    public function create($source, $authUrl, string $requestTokenUrl, array $credentials)
+    public static function create($source, $authUrl, string $requestTokenUrl, array $credentials)
     {
         $instance = null;
 
