@@ -2,6 +2,8 @@
 
 namespace KMurgadella\RestApiManager;
 
+use KMurgadella\RestApiManager\Auth\Manager\ManagerInterface;
+
 interface ApiManagerInterface
 {
     public function __construct(string $apiUrl);
@@ -19,4 +21,8 @@ interface ApiManagerInterface
     public function request(string $method, string $url, array $data, array $headers): array;
 
     public function authHeaders(array $headers = []): array;
+
+    public function getAuth(): ManagerInterface;
+
+    public function setAuth(ManagerInterface $auth);
 }

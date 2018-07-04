@@ -21,6 +21,11 @@ class ApiManager implements ApiManagerInterface
         return $this->apiUrl;
     }
 
+    public function getAuth(): ManagerInterface
+    {
+        return $this->auth;
+    }
+
     public function setAuth(ManagerInterface $auth)
     {
         $this->auth = $auth;
