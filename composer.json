@@ -1,6 +1,6 @@
 {
     "name": "kirianmurgadella/restapimanager",
-    "description": "Library to manage calls to a Restfull API",
+    "description": "Library to manage calls to a Rest API",
     "type": "library",
     "autoload": {
         "psr-4": {
@@ -13,5 +13,7 @@
             "email": "kirian@murgadella.com"
         }
     ],
-    "require": {}
+    "require": {
+        "php": ">=7.0"
+    }
 }

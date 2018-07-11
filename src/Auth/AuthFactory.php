@@ -2,24 +2,26 @@
 
 namespace KMurgadella\RestApiManager\Auth;
 
-use KMurgadella\RestApiManager\ApiManager;
 use KMurgadella\RestApiManager\Auth\Manager;
 
 class AuthFactory
 {
-    public static function create($source, $authUrl, string $requestTokenUrl, array $credentials)
+    public static function create(string $source, string $authUrl, string $requestTokenUrl, array $credentials)
     {
         $instance = null;
 
-        $apiManager = new ApiManager($authUrl);
+        $apiManager = ApiManagerFactory::create($authUrl);
 
-        switch ($source) {
-            case 'jwt':
-                $instance = new Manager\Jwt($apiManager, $requestTokenUrl, $credentials);
-            break;
+        if ($apiManager) {
+            switch ($source) {
+                case 'jwt':
+                    $instance = new Manager\Jwt($apiManager, $requestTokenUrl, $credentials);
+                    break;
 
-            default:
-                //TODO: Throw Exception invalid source
+                default:
+                    //TODO: Throw custom Exception no valid source
+                    throw new \Exception('No valid source');
+            }
         }
 
         return $instance;
