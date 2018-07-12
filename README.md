@@ -52,6 +52,25 @@ $apiManager = ApiManagerFactory::create('https://api-url.com', $auth);
     $apiManager->request('custom method', 'api/custom/endpoint', ['request data'], ['custom headers']);
 ```
 
+### Response
+Every response will have the same structure
+```
+[
+    'status' => 'success/error',
+    'statusCode => 'XXX',
+    'data' => [],
+    'errors' => [
+        [...],
+        [...],
+        [...]
+    ]
+]
+```
+* **status**: Contains success if everything goes well or **error** if something failed.
+* **statusCode**: Will be the HTTP Status from the cURL request.
+* **data**: It has the response of the request. **Here is whatever you asked for**.
+* **errors**: You want it empty, but at least it will tell you what failed.
+
 ## Changelog
 
 **1.0.0**
