@@ -3,10 +3,10 @@
 namespace KMurgadella\RestApiManager\Auth\Model;
 
 /**
- * Class Jwt
+ * Class BasicAuth
  * @package KMurgadella\RestApiManager\Auth\Model
  */
-class Jwt implements TokenInterface
+class BasicAuth implements TokenInterface
 {
     /**
      * @var
@@ -15,11 +15,7 @@ class Jwt implements TokenInterface
     /**
      * @var
      */
-    protected $token_type;
-    /**
-     * @var
-     */
-    protected $expires_in;
+    protected $token_type = 'Basic';
 
     /**
      * @return string
@@ -48,42 +44,13 @@ class Jwt implements TokenInterface
     }
 
     /**
-     * @param string $token_type
-     * @return $this
-     */
-    public function setTokenType(string $token_type)
-    {
-        $this->token_type = $token_type;
-        return $this;
-    }
-
-    /**
-     * @return string
-     */
-    public function getExpiresIn(): string
-    {
-        return $this->expires_in;
-    }
-
-    /**
-     * @param int $expires_in
-     * @return $this
-     */
-    public function setExpiresIn(int $expires_in)
-    {
-        $this->expires_in = $expires_in;
-        return $this;
-    }
-
-    /**
      * @return array
      */
     public function getData(): array
     {
         return [
             'access_token' => $this->getAccessToken(),
-            'token_type' => $this->getTokenType(),
-            'expires_in' => $this->getExpiresIn()
+            'token_type' => $this->getTokenType()
         ];
     }
 
@@ -94,25 +61,11 @@ class Jwt implements TokenInterface
      */
     public function setData(array $data): TokenInterface
     {
-        if (array_key_exists('access_token', $data)) {
+        if (array_key_exists('access_token', $data) && !empty($data['access_token'])) {
             $this->setAccessToken($data['access_token']);
         } else {
             //TODO: Throw custom Exception invalid token
             throw new \Exception('Invalid token');
-        }
-
-        if (array_key_exists('token_type', $data)) {
-            $this->setTokenType($data['token_type']);
-        } else {
-            //TODO: Throw custom Exception invalid token type
-            throw new \Exception('Invalid token tuype');
-        }
-
-        if (array_key_exists('expires_in', $data)) {
-            $this->setExpiresIn($data['expires_in']);
-        } else {
-            //TODO: Throw custom Exception invalid expiration
-            throw new \Exception('Invalid expiration');
         }
 
         return $this;
