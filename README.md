@@ -73,6 +73,10 @@ Every response will have the same structure
 
 ## Changelog
 
+**1.1.0**
+
+* Added DELETE method.
+
 **1.0.0**
 
 * Basic API interaction (GET, POST, PUT).
