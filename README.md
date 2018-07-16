@@ -73,6 +73,10 @@ Every response will have the same structure
 
 ## Changelog
 
+**1.2.0**
+
+* Fixed ApiManagerFactory namespace.
+
 **1.1.0**
 
 * Added DELETE method.
