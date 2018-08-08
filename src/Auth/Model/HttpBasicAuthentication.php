@@ -3,10 +3,10 @@
 namespace KMurgadella\RestApiManager\Auth\Model;
 
 /**
- * Class OAuthBasicAuthentication
+ * Class HttpBasicAuthentication
  * @package KMurgadella\RestApiManager\Auth\Model
  */
-class OAuthBasicAuthentication implements TokenInterface
+class HttpBasicAuthentication implements TokenInterface
 {
     /**
      * @var
@@ -92,7 +92,7 @@ class OAuthBasicAuthentication implements TokenInterface
         }
 
         if (array_key_exists('password', $data) && !empty($data['password'])) {
-            $this->setUsername($data['password']);
+            $this->setPassword($data['password']);
         } else {
             //TODO: Throw custom Exception invalid password
             throw new \Exception('Invalid password');

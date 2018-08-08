@@ -23,21 +23,32 @@ $apiManager = ApiManagerFactory::create('https://api-url.com');
 
 #### API with authentication
 
-**This package only works with [JSON Web Token](https://es.wikipedia.org/wiki/JSON_Web_Token)**
+**This package works with: [JSON Web Token](https://es.wikipedia.org/wiki/JSON_Web_Token) and [HTTP Basic Authentication](https://en.wikipedia.org/wiki/Basic_access_authentication)**
 
-Create a new instance for your authentication
+##### Create a new instance for your authentication using its factory
+###### With JWT
 
 ```
-$apiLoginUrl = 'https://api-url.com/login';
-$apiTokenRequestUrl = 'https://api-url.com/request-token';
 $credentials = [
     'email' => 'myemail@domain.com',
     'password' => 'mypassword'
 ];
-$auth = Auth\AuthFactory::create('jwt', $apiLoginUrl, $apiTokenRequestUrl, $credentials);
+$apiLoginUrl = 'https://api-url.com/login';
+$apiTokenRequestUrl = 'https://api-url.com/request-token';
+$auth = Auth\AuthFactory::create('jwt', $credentials, $apiLoginUrl, $apiTokenRequestUrl);
 ```
 
-Create a new instance of ApiManager using its factory.
+###### With BA
+
+```
+$credentials = [
+    'username' => 'myusername',
+    'password' => 'mypassword'
+];
+$auth = Auth\AuthFactory::create('basic', $credentials);
+```
+
+##### Create a new instance of ApiManager using its factory
 
 ```
 $apiManager = ApiManagerFactory::create('https://api-url.com', $auth);
@@ -72,6 +83,10 @@ Every response will have the same structure
 * **errors**: You want it empty, but at least it will tell you what failed.
 
 ## Changelog
+
+**1.3.0**
+
+* Added Http Basic Authentication
 
 **1.2.0**
 

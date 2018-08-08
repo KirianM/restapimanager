@@ -2,14 +2,14 @@
 
 namespace KMurgadella\RestApiManager\Auth\Manager;
 
-use KMurgadella\RestApiManager\Auth\Model\BasicAuth as BasicAuthModel;
+use KMurgadella\RestApiManager\Auth\Model\HttpBasicAuthentication as HttpBasicAuthenticationModel;
 use KMurgadella\RestApiManager\Auth\Model\TokenInterface;
 
 /**
- * Class BasicAuth
+ * Class HttpBasicAuthentication
  * @package KMurgadella\RestApiManager\Auth\Manager
  */
-class BasicAuth
+class HttpBasicAuthentication
 {
     /**
      * @var
@@ -17,13 +17,20 @@ class BasicAuth
     protected $token;
 
     /**
-     * BasicAuth constructor.
-     * @param string $access_token
+     * @var array
      */
-    public function __construct(string $access_token)
+    protected $credentials;
+
+    /**
+     * OauthBasicAuthentication constructor.
+     * @param array $credentials
+     */
+    public function __construct(array $credentials)
     {
-        $model = new BasicAuthModel();
-        $model->setData(['access_token' => $access_token]);
+        $this->credentials = $credentials;
+
+        $model = new HttpBasicAuthenticationModel();
+        $model->setData($this->credentials);
         $this->setToken($model);
     }
 
