@@ -1,8 +1,7 @@
 <?php
 
-namespace KMurgadella\RestApiManager\Auth;
+namespace KMurgadella\RestApiManager;
 
-use KMurgadella\RestApiManager\ApiManager;
 use KMurgadella\RestApiManager\Auth\Manager\ManagerInterface;
 
 class ApiManagerFactory

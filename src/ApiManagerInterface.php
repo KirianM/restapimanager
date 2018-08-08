@@ -52,6 +52,13 @@ interface ApiManagerInterface
     public function post(string $url, array $data, array $headers = []): array;
 
     /**
+     * @param string $url
+     * @param array $headers
+     * @return array
+     */
+    public function delete(string $url, array $headers = []): array;
+
+    /**
      * @param string $method
      * @param string $url
      * @param array $data

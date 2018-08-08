@@ -2,6 +2,7 @@
 
 namespace KMurgadella\RestApiManager\Auth;
 
+use KMurgadella\RestApiManager\ApiManagerFactory;
 use KMurgadella\RestApiManager\Auth\Manager;
 
 class AuthFactory

@@ -101,6 +101,16 @@ class ApiManager implements ApiManagerInterface
     }
 
     /**
+     * @param string $url
+     * @param array $headers
+     * @return array
+     */
+    public function delete(string $url, array $headers = []): array
+    {
+        return $this->request('DELETE', $url, $headers);
+    }
+
+    /**
      * @param string $method
      * @param string $url
      * @param array $data
