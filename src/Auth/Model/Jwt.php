@@ -31,9 +31,9 @@ class Jwt implements TokenInterface
 
     /**
      * @param string $access_token
-     * @return $this
+     * @return TokenInterface
      */
-    public function setAccessToken(string $access_token)
+    public function setAccessToken(string $access_token): TokenInterface
     {
         $this->access_token = $access_token;
         return $this;
