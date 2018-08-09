@@ -12,34 +12,6 @@ use KMurgadella\RestApiManager\Auth\Model\TokenInterface;
 interface ManagerInterface
 {
     /**
-     * ManagerInterface constructor.
-     * @param ApiManagerInterface $apiManager
-     * @param string $requestTokenUrl
-     * @param array $credentials
-     */
-    public function __construct(ApiManagerInterface $apiManager, string $requestTokenUrl, array $credentials);
-
-    /**
-     * @return ManagerInterface
-     */
-    public function request(): ManagerInterface;
-
-    /**
-     * @return ManagerInterface
-     */
-    public function refresh(): ManagerInterface;
-
-    /**
-     * @return bool
-     */
-    public function validate(): bool;
-
-    /**
-     * @return array
-     */
-    public function headers(): array;
-
-    /**
      * @return TokenInterface
      */
     public function getToken(): TokenInterface;

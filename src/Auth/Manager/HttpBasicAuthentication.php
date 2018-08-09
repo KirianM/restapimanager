@@ -9,7 +9,7 @@ use KMurgadella\RestApiManager\Auth\Model\TokenInterface;
  * Class HttpBasicAuthentication
  * @package KMurgadella\RestApiManager\Auth\Manager
  */
-class HttpBasicAuthentication
+class HttpBasicAuthentication implements ManagerInterface
 {
     /**
      * @var
